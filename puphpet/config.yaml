@@ -69,6 +69,7 @@ server:
     packages:
         - default-jdk
         - chromium-browser
+        - acl
 firewall:
     install: '0'
     rules: null
@@ -194,7 +195,7 @@ nodejs:
         - protractor
         - cucumber
 python:
-    install: '1' 
+    install: '1'
     packages: {  }
     versions: {  }
 mysql:
@@ -242,11 +243,11 @@ mongodb:
     settings:
         auth: 1
         port: '27017'
-    databases: 
-        D9TT4qTsFcRH: 
-            name: znieh 
-            user: znieh 
-            password: znieh 
+    databases:
+        D9TT4qTsFcRH:
+            name: znieh
+            user: znieh
+            password: znieh
 redis:
     install: '1'
     settings:

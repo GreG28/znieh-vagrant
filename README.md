@@ -9,7 +9,7 @@ Ensure you have the following tools installed on your computer:
 # Description
 This configuration includes following software:
 
-* PHP 5.5 
+* PHP 5.5
 * MySQL
 * GIT
 * Apache
@@ -34,15 +34,15 @@ $ vagrant up
 While waiting for Vagrant to start up, you should add an entry into hosts file on the host machine.
 
 ```
-192.168.56.111      znieh.dev
+10.0.0.100      znieh.dev
 ```
 
-Windows users could look here: 
+Windows users could look here:
 ```
 c:\windows\system32\drivers\etc\hosts
 ```
 
-Linux and Mac OSX users could look here: 
+Linux and Mac OSX users could look here:
 ```
 /etc/hosts.
 ```
@@ -58,16 +58,17 @@ cd /var/www
 
 # Troubleshooting
 
+## Symfony2
+
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/tmp``.
 
 To view the application logs, run the following commands:
 
 ```bash
-$ tail -f /tmp/logs/prod.log
 $ tail -f /tmp/logs/dev.log
 ```
 
-Using Windows
+## Using Windows
 
 		mkdir ~/node_modules
 		ln -s ~/node_modules /var/www/znieh/node_modules
