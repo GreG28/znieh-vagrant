@@ -58,6 +58,10 @@ cd /var/www
 
 # Troubleshooting
 
+## Composer memory
+
+	php -d memory_limit=-1 /usr/local/bin/composer install
+
 ## Symfony2
 
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/tmp``.
