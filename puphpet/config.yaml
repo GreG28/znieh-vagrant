@@ -1,8 +1,8 @@
 ---
 vagrantfile-local:
     vm:
-        box: puphpet/debian75-x64
-        box_url: puphpet/debian75-x64
+        box: puphpet/ubuntu1404-x64
+        box_url: puphpet/ubuntu1404-x64
         hostname: ''
         memory: '1024'
         cpus: '1'
@@ -19,8 +19,6 @@ vagrantfile-local:
                 modifyvm:
                     name: znieh-vm
                     natdnshostresolver1: on
-                setextradata:
-                    VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root: 1
             vmware:
                 numvcpus: 1
             parallels:
@@ -51,7 +49,6 @@ vagrantfile-local:
         usable_port_range:
             start: 10200
             stop: 10500
-        post_up_message: ''
     ssh:
         host: null
         port: null
@@ -78,12 +75,11 @@ apache:
     settings:
         user: www-data
         group: www-data
-        default_vhost: false
+        default_vhost: true
         manage_user: false
         manage_group: false
         sendfile: 0
     modules:
-        - php
         - rewrite
         - ssl
     vhosts:
@@ -91,7 +87,7 @@ apache:
             servername: znieh.dev
             serveraliases:
                 - www.znieh.dev
-            docroot: /var/www/znieh/web
+            docroot: /var/www/znieh/client/dist
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -102,7 +98,7 @@ apache:
                 - FollowSymLinks
                 - MultiViews
             engine: php
-            custom_fragment: "RewriteEngine On\r\nRewriteCond %{HTTP:Authorization} ^(.*)\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
+            custom_fragment: "Alias /api /var/www/znieh/web\r\nRewriteEngine On\r\nRewriteCond %{HTTP:Authorization} ^(.*)\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
@@ -149,7 +145,7 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-        memory_limit: 512M
+        memory_limit: -1
     timezone: Europe/Paris
     mod_php: 0
 hhvm:
@@ -185,6 +181,7 @@ ruby:
             gems:
                 - sass
                 - compass
+                - scss-lint
 nodejs:
     install: '1'
     npm_packages:
@@ -194,6 +191,7 @@ nodejs:
         - grunt
         - protractor
         - cucumber
+        - karma-cli
 python:
     install: '1'
     packages: {  }
