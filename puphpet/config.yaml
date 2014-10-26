@@ -83,11 +83,27 @@ apache:
         - rewrite
         - ssl
     vhosts:
-        t3qKpiZtU6c0:
+        V6KLY8g1V6zX:
             servername: znieh.dev
             serveraliases:
                 - www.znieh.dev
             docroot: /var/www/znieh/client/dist
+            port: '80'
+            override:
+                - All
+            options:
+                - Indexes
+                - FollowSymLinks
+                - MultiViews
+            engine: none
+            custom_fragment: "RewriteEngine On\r\nRewriteCond %{REQUEST_FILENAME} -f\r\nRewriteRule .? - [L]"
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+        1KtwF2f8Y3Jz:
+            servername: api.znieh.dev
+            docroot: /var/www/znieh/web
             port: '80'
             setenv:
                 - 'APP_ENV dev'
@@ -98,7 +114,7 @@ apache:
                 - FollowSymLinks
                 - MultiViews
             engine: php
-            custom_fragment: "Alias /api /var/www/znieh/web\r\nRewriteEngine On\r\nRewriteCond %{HTTP:Authorization} ^(.*)\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
+            custom_fragment: "RewriteEngine On\r\nRewriteCond %{HTTP:Authorization} ^(.*)\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
