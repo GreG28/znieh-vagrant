@@ -96,7 +96,7 @@ apache:
                 - FollowSymLinks
                 - MultiViews
             engine: none
-            custom_fragment: "RewriteEngine On\r\nRewriteCond %{REQUEST_FILENAME} -f\r\nRewriteRule .? - [L]"
+            custom_fragment: ""
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
