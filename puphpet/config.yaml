@@ -119,7 +119,7 @@ apache:
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-    mod_pagespeed: '1'
+    mod_pagespeed: '0'
 nginx:
     install: '0'
     settings:
