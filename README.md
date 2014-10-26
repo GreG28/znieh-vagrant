@@ -31,10 +31,11 @@ $ cd vagrant
 $ vagrant up
 ```
 
-While waiting for Vagrant to start up, you should add an entry into hosts file on the host machine.
+While waiting for Vagrant to start up, you should add entries into hosts file on the host machine.
 
 ```
 10.0.0.100      znieh.dev
+10.0.0.100      api.znieh.dev
 ```
 
 Windows users could look here:
@@ -47,20 +48,16 @@ Linux and Mac OSX users could look here:
 /etc/hosts.
 ```
 
-From now you should be able to access the project at [http://znieh.dev/](http://znieh.dev/)
+From now you should be able to access the project at [http://znieh.dev/](http://znieh.dev/) and [http://api.znieh.dev/](http://api.znieh.dev/)
 
 To access VM simply run:
 
 ```
 vagrant ssh
-cd /var/www
+cd /var/www/znieh
 ```
 
 # Troubleshooting
-
-## Composer memory
-
-	php -d memory_limit=-1 /usr/local/bin/composer install
 
 ## Symfony2
 
