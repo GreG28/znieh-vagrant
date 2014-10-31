@@ -114,7 +114,7 @@ apache:
                 - FollowSymLinks
                 - MultiViews
             engine: php
-            custom_fragment: "RewriteEngine On\r\nRewriteCond %{HTTP:Authorization} ^(.*)\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
+            custom_fragment: "RewriteEngine On\r\nRewriteRule .* - [e=HTTP_AUTHORIZATION:%1]"
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
